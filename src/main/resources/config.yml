@@ -1,2 +1,2 @@
 messages:
-  player_death: "{GRAY}{BOLD}[{GREEN}{BOLD}+{GRAY}{BOLD}] {YELLOW}{USERNAME} {GRAY}died [POSITION]"
+  player_death: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}] {YELLOW}{USERNAME} {GRAY}died [{POSITION}]"
