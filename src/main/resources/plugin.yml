@@ -1,0 +1,7 @@
+name: "PlayerHelper"
+main: "axc.PlayerHelper.PlayerHelper"
+version: "1.0.0"
+author: "ashzHax"
+api-version: "1.17"
+prefix: "PlayerHelper"
+description: "Player helping event handlers and commands."
