@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.ashzHax</groupId>
-    <artifactId>PlayerHelper</artifactId>
+    <artifactId>AXPlayerHelper</artifactId>
     <version>1.17-1.0-SNAPSHOT</version>
 
     <properties>

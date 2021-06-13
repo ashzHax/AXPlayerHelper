@@ -1,9 +1,9 @@
-package axc.PlayerHelper;
+package axc.AXPlayerHelper;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
-public class PlayerHelper extends JavaPlugin {
+public class AXPlayerHelper extends JavaPlugin {
     @Override
     public void onEnable() {
 
