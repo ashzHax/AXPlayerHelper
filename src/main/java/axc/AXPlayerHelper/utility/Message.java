@@ -3,12 +3,21 @@ package axc.AXPlayerHelper.utility;
 import axc.AXPlayerHelper.AXPlayerHelper;
 import org.bukkit.ChatColor;
 
+import java.util.Map;
+
 public class Message {
 
     public enum LogType {
         PLAYER_JOIN,
         PLAYER_QUIT,
         PLAYER_DEATH,
+    };
+
+    public enum StringType {
+        PLAYER_NAME,
+        POSITION,
+        DAMAGE,
+        DEATH_CAUSE,
     };
 
     private static String convertColorString(String target)
@@ -40,29 +49,47 @@ public class Message {
         return target;
     }
 
-    private static String convertPlayernameString(String target, String playerName)
+    private static String convertGeneralString(StringType strT, String target, Map<StringType, String> data)
     {
-        if(playerName == null) {
-            target = target.replaceAll("\\{USERNAME\\}", "NULL");
-        } else {
-            target = target.replaceAll("\\{USERNAME\\}", playerName);
+        switch(strT) {
+            case PLAYER_NAME: {
+                if(data == null) {
+                    target = target.replaceAll("\\{PLAYERNAME\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{PLAYERNAME\\}", data.get(strT));
+                }
+                break;
+            }
+            case POSITION: {
+                if(data == null) {
+                    target = target.replaceAll("\\{POSITION\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{POSITION\\}", data.get(strT));
+                }
+                break;
+            }
+            case DAMAGE: {
+                if(data == null) {
+                    target = target.replaceAll("\\{DAMAGE\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{DAMAGE\\}", data.get(strT));
+                }
+                break;
+            }
+            case DEATH_CAUSE: {
+                if(data == null) {
+                    target = target.replaceAll("\\{DEATH_CAUSE\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{DEATH_CAUSE\\}", data.get(strT));
+                }
+                break;
+            }
         }
 
         return target;
     }
 
-    private static String convertPositionString(String target, String position)
-    {
-        if(position == null) {
-            target = target.replaceAll("\\{POSITION\\}", "NULL");
-        } else {
-            target = target.replaceAll("\\{POSITION\\}", position);
-        }
-
-        return target;
-    }
-
-    public static String getConfigMessage(AXPlayerHelper plugin, LogType logT, String playerName, String position)
+    public static String getConfigMessage(AXPlayerHelper plugin, LogType logT, Map<StringType, String> data)
     {
         String returnString;
 
@@ -70,22 +97,24 @@ public class Message {
             case PLAYER_JOIN: {
                 returnString = plugin.getConfig().getString("messages.player_join");
 
-                returnString = convertPlayernameString(returnString, playerName);
+                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
             case PLAYER_QUIT: {
                 returnString = plugin.getConfig().getString("messages.player_quit");
 
-                returnString = convertPlayernameString(returnString, playerName);
+                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
             case PLAYER_DEATH: {
                 returnString = plugin.getConfig().getString("messages.player_death");
 
-                returnString = convertPlayernameString(returnString, playerName);
-                returnString = convertPositionString(returnString, position);
+                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
+                returnString = convertGeneralString(StringType.POSITION, returnString, data);
+                returnString = convertGeneralString(StringType.DAMAGE, returnString, data);
+                returnString = convertGeneralString(StringType.DEATH_CAUSE, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }

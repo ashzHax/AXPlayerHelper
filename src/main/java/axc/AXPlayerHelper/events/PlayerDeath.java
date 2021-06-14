@@ -1,13 +1,16 @@
 package axc.AXPlayerHelper.events;
 
 import axc.AXPlayerHelper.AXPlayerHelper;
-import axc.AXPlayerHelper.utility.Message;
+import axc.AXPlayerHelper.utility.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerDeath implements Listener {
 
@@ -16,20 +19,20 @@ public class PlayerDeath implements Listener {
         this.plugin = p;
     }
 
-    private static String double_get_only_selective_decimal(double value, int decimalPoint)
-    {
-        return String.format("%."+decimalPoint+"f", value);
-    }
-
     @EventHandler
     public void HandlePlayerDeathEvent(PlayerDeathEvent event)
     {
         if (event.getEntityType() == EntityType.PLAYER) {
             Player eventPlayer = (Player) event.getEntity();
+            EntityDamageEvent ede = eventPlayer.getLastDamageCause();
 
-            EntityDamageEvent de = eventPlayer.getLastDamageCause();
+            Map<Message.StringType, String> data = new HashMap<Message.StringType, String>();
 
-            event.setDeathMessage(Message.getConfigMessage(plugin, Message.LogType.PLAYER_DEATH, eventPlayer.getName(), de.getCause().toString()+","+double_get_only_selective_decimal(de.getDamage(), 1)));
+            data.put(Message.StringType.PLAYER_NAME, eventPlayer.getName());
+            data.put(Message.StringType.DEATH_CAUSE, ede.getCause().toString());
+            data.put(Message.StringType.DAMAGE, ExF.double_to_string_selective_decimal(ede.getDamage(), 1));
+
+            event.setDeathMessage(Message.getConfigMessage(plugin, Message.LogType.PLAYER_DEATH, data));
         }
     }
 
