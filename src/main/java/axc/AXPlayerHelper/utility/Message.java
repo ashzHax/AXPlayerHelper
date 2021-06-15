@@ -1,6 +1,7 @@
 package axc.AXPlayerHelper.utility;
 import axc.AXPlayerHelper.AXPlayerHelper;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 
 import java.util.Map;
 
@@ -57,9 +58,9 @@ public class Message {
         switch(strT) {
             case PLAYER_NAME: {
                 if(data == null) {
-                    target = target.replaceAll("\\{PLAYERNAME\\}", "NULL");
+                    target = target.replaceAll("\\{PLAYER_NAME\\}", "NULL");
                 } else {
-                    target = target.replaceAll("\\{PLAYERNAME\\}", data.get(strT));
+                    target = target.replaceAll("\\{PLAYER_NAME\\}", data.get(strT));
                 }
                 break;
             }

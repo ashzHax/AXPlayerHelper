@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class AXPlayerHelper extends JavaPlugin {
     @Override
     public void onEnable() {
+        this.saveDefaultConfig();
         this.getServer().getPluginManager().registerEvents(new PlayerDeath(this), this);
     }
 
