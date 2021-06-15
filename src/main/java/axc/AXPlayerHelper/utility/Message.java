@@ -1,5 +1,4 @@
 package axc.AXPlayerHelper.utility;
-
 import axc.AXPlayerHelper.AXPlayerHelper;
 import org.bukkit.ChatColor;
 
@@ -18,6 +17,10 @@ public class Message {
         POSITION,
         DAMAGE,
         DEATH_CAUSE,
+		WORLD,
+		POSX,
+		POSY,
+		POSZ,
     };
 
     private static String convertColorString(String target)
@@ -84,6 +87,38 @@ public class Message {
                 }
                 break;
             }
+			case WORLD: {
+                if(data == null) {
+                    target = target.replaceAll("\\{WORLD\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{WORLD\\}", data.get(strT));
+                }
+				break;
+			}
+			case POSX: {
+                if(data == null) {
+                    target = target.replaceAll("\\{POSX\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{POSX\\}", data.get(strT));
+                }
+				break;
+			}
+			case POSY: {
+                if(data == null) {
+                    target = target.replaceAll("\\{POSY\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{POSY\\}", data.get(strT));
+                }
+				break;
+			}
+			case POSZ: {
+                if(data == null) {
+                    target = target.replaceAll("\\{POSZ\\}", "NULL");
+                } else {
+                    target = target.replaceAll("\\{POSZ\\}", data.get(strT));
+                }
+				break;
+			}
         }
 
         return target;
@@ -112,9 +147,13 @@ public class Message {
                 returnString = plugin.getConfig().getString("messages.player_death");
 
                 returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
-                returnString = convertGeneralString(StringType.POSITION, returnString, data);
+                //returnString = convertGeneralString(StringType.POSITION, returnString, data);
                 returnString = convertGeneralString(StringType.DAMAGE, returnString, data);
                 returnString = convertGeneralString(StringType.DEATH_CAUSE, returnString, data);
+                returnString = convertGeneralString(StringType.WORLD, returnString, data);
+                returnString = convertGeneralString(StringType.POSX, returnString, data);
+                returnString = convertGeneralString(StringType.POSY, returnString, data);
+                returnString = convertGeneralString(StringType.POSZ, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
@@ -124,5 +163,10 @@ public class Message {
         }
         return returnString;
     }
+
+	public static String createLocationString(Location TL /*Target Location*/)
+	{
+		return "W:"+TL.getWorld().getName()+",X:"+TL.getBlockX()+",Y:"+TL.getBlockY()+",Z:"+TL.getBlockZ();
+	}
 
 }

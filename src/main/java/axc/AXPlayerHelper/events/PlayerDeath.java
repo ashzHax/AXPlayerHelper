@@ -24,13 +24,18 @@ public class PlayerDeath implements Listener {
     {
         if (event.getEntityType() == EntityType.PLAYER) {
             Player eventPlayer = (Player) event.getEntity();
+            Location deathLocation = eventPlayer.getLocation();
             EntityDamageEvent ede = eventPlayer.getLastDamageCause();
-
             Map<Message.StringType, String> data = new HashMap<Message.StringType, String>();
 
             data.put(Message.StringType.PLAYER_NAME, eventPlayer.getName());
             data.put(Message.StringType.DEATH_CAUSE, ede.getCause().toString());
             data.put(Message.StringType.DAMAGE, ExF.double_to_string_selective_decimal(ede.getDamage(), 1));
+            //data.put(Message.StringType.POSITION, Message.createLocationString(deathLocation));
+            data.put(Message.StringType.WORLD, deathLocation.getWorld().getName());
+            data.put(Message.StringType.POSX, deathLocation.getBlockX());
+            data.put(Message.StringType.POSY, deathLocation.getBlockY());
+            data.put(Message.StringType.POSZ, deathLocation.getBlockZ());
 
             event.setDeathMessage(Message.getConfigMessage(plugin, Message.LogType.PLAYER_DEATH, data));
         }
