@@ -1,6 +1,6 @@
 package axc.AXPlayerHelper;
 
-import axc.AXPlayerHelper.events.*;
+import axc.AXPlayerHelper.event.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")

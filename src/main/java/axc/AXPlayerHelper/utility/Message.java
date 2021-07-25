@@ -11,6 +11,8 @@ public class Message {
         PLAYER_JOIN,
         PLAYER_QUIT,
         PLAYER_DEATH,
+        COMMAND_INVALID_ARGUMENT_TYPE,
+        COMMAND_REQUIRE_ARGUMENTS,
     };
 
     public enum StringType {
@@ -158,6 +160,17 @@ public class Message {
                 returnString = convertColorString(returnString);
                 break;
             }
+            case COMMAND_INVALID_ARGUMENT_TYPE: {
+                returnString = plugin.getConfig().getString("messages.invalid_argument_type");
+                returnString = convertColorString(returnString);
+                break;
+            }
+            case COMMAND_REQUIRE_ARGUMENTS: {
+                returnString = plugin.getConfig().getString("messages.require_arguments");
+                returnString = convertColorString(returnString);
+                break;
+            }
+
             default: {
                 returnString = "NULL";
             }

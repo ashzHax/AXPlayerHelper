@@ -1,6 +1,6 @@
 name: "AXPlayerHelper"
 main: "axc.AXPlayerHelper.AXPlayerHelper"
-version: "1.0.0"
+version: "1.0.1"
 author: "ashzHax"
 api-version: "1.17"
 prefix: "AXPlayerHelper"
