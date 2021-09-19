@@ -1,4 +1,12 @@
 messages:
-    player_death: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}] {YELLOW}{PLAYER_NAME} {GRAY}died \r{GRAY}{BOLD}[{GRAY}{DEATH_CAUSE}{GRAY}{BOLD}][{RED}-{DAMAGE}{GRAY}{BOLD}] \r[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY}{BOLD}][{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY}{BOLD}][{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY}{BOLD}][{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
+    player_death:
+        custom: true
+        options:
+            full_custom_flag: false
+            full_custom_string: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}] {YELLOW}{PLAYER_NAME} {GRAY}died \r{GRAY}{BOLD}[{GRAY}{DEATH_CAUSE}{GRAY}{BOLD}][{RED}-{DAMAGE}{GRAY}{BOLD}]"
+            prefix: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}]"
+            suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY}{BOLD}][{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY}{BOLD}][{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY}{BOLD}][{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
+            player_color: "{YELLOW}"
+            killer_color: "{RED}"
     invalid_argument_type: ""
     require_arguments: ""

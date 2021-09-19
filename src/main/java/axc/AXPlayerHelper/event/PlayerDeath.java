@@ -29,7 +29,7 @@ public class PlayerDeath implements Listener {
             Player eventPlayer = (Player) event.getEntity();
             Location deathLocation = eventPlayer.getLocation();
             EntityDamageEvent ede = eventPlayer.getLastDamageCause();
-            Map<Message.StringType, String> data = new HashMap<Message.StringType, String>();
+            Map<Message.DataType, String> messageData = new HashMap<Message.DataType, String>();
 
             String finalDeathMessage = event.getDeathMessage();
             finalDeathMessage = ""+ChatColor.GRAY+ChatColor.BOLD+"["+ChatColor.GREEN+ChatColor.BOLD+"!"+ChatColor.GRAY+ ChatColor.BOLD+"]"+ ChatColor.GRAY+" " + finalDeathMessage;

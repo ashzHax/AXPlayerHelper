@@ -5,3 +5,7 @@ author: "ashzHax"
 api-version: "1.17"
 prefix: "AXPlayerHelper"
 description: "Player helping event handlers and commands."
+commands:
+  echo:
+    description: "Outputs players current position to the public chat."
+    permission: axc.echo

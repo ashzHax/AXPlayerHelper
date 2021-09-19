@@ -15,7 +15,7 @@ public class Message {
         COMMAND_REQUIRE_ARGUMENTS,
     };
 
-    public enum StringType {
+    public enum DataType {
         PLAYER_NAME,
         POSITION,
         DAMAGE,
@@ -55,7 +55,7 @@ public class Message {
         return target;
     }
 
-    private static String convertGeneralString(StringType strT, String target, Map<StringType, String> data)
+    private static String convertGeneralString(DataType strT, String target, Map<DataType, String> data)
     {
         switch(strT) {
             case PLAYER_NAME: {
@@ -127,7 +127,7 @@ public class Message {
         return target;
     }
 
-    public static String getConfigMessage(AXPlayerHelper plugin, LogType logT, Map<StringType, String> data)
+    public static String getConfigMessage(AXPlayerHelper plugin, LogType logT, Map<DataType, String> data)
     {
         String returnString;
 
@@ -135,28 +135,28 @@ public class Message {
             case PLAYER_JOIN: {
                 returnString = plugin.getConfig().getString("messages.player_join");
 
-                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
+                returnString = convertGeneralString(DataType.PLAYER_NAME, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
             case PLAYER_QUIT: {
                 returnString = plugin.getConfig().getString("messages.player_quit");
 
-                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
+                returnString = convertGeneralString(DataType.PLAYER_NAME, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
             case PLAYER_DEATH: {
                 returnString = plugin.getConfig().getString("messages.player_death");
 
-                returnString = convertGeneralString(StringType.PLAYER_NAME, returnString, data);
-                //returnString = convertGeneralString(StringType.POSITION, returnString, data);
-                returnString = convertGeneralString(StringType.DAMAGE, returnString, data);
-                returnString = convertGeneralString(StringType.DEATH_CAUSE, returnString, data);
-                returnString = convertGeneralString(StringType.WORLD, returnString, data);
-                returnString = convertGeneralString(StringType.POSX, returnString, data);
-                returnString = convertGeneralString(StringType.POSY, returnString, data);
-                returnString = convertGeneralString(StringType.POSZ, returnString, data);
+                returnString = convertGeneralString(DataType.PLAYER_NAME, returnString, data);
+                //returnString = convertGeneralString(DataType.POSITION, returnString, data);
+                returnString = convertGeneralString(DataType.DAMAGE, returnString, data);
+                returnString = convertGeneralString(DataType.DEATH_CAUSE, returnString, data);
+                returnString = convertGeneralString(DataType.WORLD, returnString, data);
+                returnString = convertGeneralString(DataType.POSX, returnString, data);
+                returnString = convertGeneralString(DataType.POSY, returnString, data);
+                returnString = convertGeneralString(DataType.POSZ, returnString, data);
                 returnString = convertColorString(returnString);
                 break;
             }
