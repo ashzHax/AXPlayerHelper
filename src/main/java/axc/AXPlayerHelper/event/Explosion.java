@@ -12,6 +12,6 @@ public class Explosion implements Listener {
 
     @EventHandler
     public void HandleExplosion(EntityExplodeEvent event) {
-        plugin.getServer().broadcastMessage("debug: explooooosion ("+event.getLocation().toString()+")");
+        //plugin.getServer().broadcastMessage("debug: explooooosion ("+event.getLocation().toString()+")");
     }
 }

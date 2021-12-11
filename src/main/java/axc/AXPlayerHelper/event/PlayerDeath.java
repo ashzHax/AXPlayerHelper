@@ -37,8 +37,8 @@ public class PlayerDeath implements Listener {
             finalDeathMessage = finalDeathMessage + " "
 //                    +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"W"+ChatColor.GRAY+":"+deathLocation.getWorld().getName()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]"
                     +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"X"+ChatColor.GRAY+":"+deathLocation.getBlockX()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]"
-                    +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Y"+ChatColor.GRAY+":"+deathLocation.getBlockX()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]"
-                    +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Z"+ChatColor.GRAY+":"+deathLocation.getBlockX()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]";
+                    +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Y"+ChatColor.GRAY+":"+deathLocation.getBlockY()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]"
+                    +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Z"+ChatColor.GRAY+":"+deathLocation.getBlockZ()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]";
 
 
 //            data.put(Message.StringType.PLAYER_NAME, eventPlayer.getName());
