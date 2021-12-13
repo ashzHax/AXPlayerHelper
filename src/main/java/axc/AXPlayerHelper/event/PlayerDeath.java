@@ -24,7 +24,6 @@ public class PlayerDeath implements Listener {
     @EventHandler
     public void HandlePlayerDeathEvent(PlayerDeathEvent event)
     {
-
         if (event.getEntityType() == EntityType.PLAYER) {
             Player eventPlayer = (Player) event.getEntity();
             Location deathLocation = eventPlayer.getLocation();
@@ -40,9 +39,10 @@ public class PlayerDeath implements Listener {
                     +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Y"+ChatColor.GRAY+":"+deathLocation.getBlockY()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]"
                     +ChatColor.GRAY+""+ChatColor.BOLD+"["+ChatColor.YELLOW+"Z"+ChatColor.GRAY+":"+deathLocation.getBlockZ()+""+ChatColor.GRAY+""+ChatColor.BOLD+"]";
 
+//            Message.getConfigMessage(this.plugin, Message.PLAYER_DEATH, );
 
-//            data.put(Message.StringType.PLAYER_NAME, eventPlayer.getName());
-//            data.put(Message.StringType.DEATH_CAUSE, ede.getCause().toString());
+//            messageData.put(Message.StringType.PLAYER_NAME, eventPlayer.getName());
+//            Message.put(Message.StringType.DEATH_CAUSE, ede.getCause().toString());
 //            data.put(Message.StringType.DAMAGE, ExF.double_to_string_selective_decimal(ede.getDamage(), 1));
 //            //data.put(Message.StringType.POSITION, Message.createLocationString(deathLocation));
 //            data.put(Message.StringType.WORLD, deathLocation.getWorld().getName());
