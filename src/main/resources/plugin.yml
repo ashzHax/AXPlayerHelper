@@ -2,10 +2,13 @@ name: "AXPlayerHelper"
 main: "axc.AXPlayerHelper.AXPlayerHelper"
 version: "1.0.1"
 author: "ashzHax"
-api-version: "1.17"
+api-version: "1.18"
 prefix: "AXPlayerHelper"
 description: "Player helping event handlers and commands."
 commands:
   echo:
     description: "Outputs players current position to the public chat."
     permission: axc.echo
+  s:
+    description: "Quick gamemode change to spectator mode and back."
+    permissions: axc.s

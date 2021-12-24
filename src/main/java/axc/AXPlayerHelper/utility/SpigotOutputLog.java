@@ -1,4 +1,5 @@
 package axc.AXPlayerHelper.utility;
+/*
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LogEvent;
@@ -12,7 +13,11 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SpigotOutputLog  extends AbstractAppender{
+
+ */
+public class SpigotOutputLog  {
+    /*extends
+} AbstractAppender{
 
 
     private static final org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
@@ -56,4 +61,6 @@ public class SpigotOutputLog  extends AbstractAppender{
             // and you can construct your whole log message like this:
             message = "[" +formatter.format(new Date(event.getTimeMillis())) + " " + event.getLevel().toString() + "] " + message;
         }
+
+     */
 }

@@ -2,10 +2,28 @@ package axc.AXPlayerHelper.utility;
 import axc.AXPlayerHelper.AXPlayerHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Map;
+import java.util.Set;
 
 public class Message {
+
+    // general attributes
+    private AXPlayerHelper plugin;
+
+    // configuration attributes
+    private FileConfiguration config;
+    private Set<String> messageTypes;
+
+    public Message(AXPlayerHelper pl) {
+        this.plugin = pl;
+        this.config = pl.getConfig();
+        this.messageTypes = this.config.getConfigurationSection("message").getKeys(false);
+
+
+    }
 
     public enum LogType {
         PLAYER_JOIN,

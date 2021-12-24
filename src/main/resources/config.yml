@@ -1,4 +1,6 @@
-messages:
+message:
+    player_join:
+    player_quit:
     player_death:
         custom: true
         options:
@@ -9,4 +11,4 @@ messages:
             player_color: "{YELLOW}"
             killer_color: "{RED}"
     invalid_argument_type: ""
-    require_arguments: ""
+    invalid_argument_count: ""

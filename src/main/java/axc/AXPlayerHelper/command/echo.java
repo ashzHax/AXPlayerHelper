@@ -1,6 +1,7 @@
 package axc.AXPlayerHelper.command;
 
 import axc.AXPlayerHelper.AXPlayerHelper;
+import axc.AXPlayerHelper.utility.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,14 +19,12 @@ public class echo implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-        if(commandSender instanceof Player) {
+        if(!(commandSender instanceof Player)) {
             commandSender.sendMessage("player only command");
             return false;
         }
 
         Player commandPlayer = (Player) commandSender;
-
-
 
         plugin.getServer().broadcastMessage(ChatColor.GRAY + "[" + commandSender.getName() + "] "
                 + ChatColor.BOLD + "" + ChatColor.GRAY+"X:" + ChatColor.YELLOW + commandPlayer.getEyeLocation().getBlockX()
