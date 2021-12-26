@@ -6,6 +6,9 @@ api-version: "1.18"
 prefix: "AXPlayerHelper"
 description: "Player helping event handlers and commands."
 commands:
+  test:
+    description: "Test command for internal data check"
+    permission: axc.test
   echo:
     description: "Outputs players current position to the public chat."
     permission: axc.echo

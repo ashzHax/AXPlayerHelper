@@ -5,6 +5,8 @@ import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.awt.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,14 +17,38 @@ public class Message {
 
     // configuration attributes
     private FileConfiguration config;
-    private Set<String> messageTypes;
+    public Map<String, MessageTypeConfig> msgConfigMap = new HashMap<String, MessageTypeConfig>();
 
-    public Message(AXPlayerHelper pl) {
+    public Message(AXPlayerHelper pl)
+    {
+        Set<String> msgTypeList;
+        ConfigurationSection sc;
+
         this.plugin = pl;
         this.config = pl.getConfig();
-        this.messageTypes = this.config.getConfigurationSection("message").getKeys(false);
 
+        sc = this.config.getConfigurationSection("message");
+        msgTypeList = sc.getKeys(false);
 
+        // get all configuration
+        msgTypeList.forEach((String key) -> {
+            this.plugin.getServer().broadcastMessage("->"+key);
+            MessageTypeConfig newConfig = new MessageTypeConfig();
+            {
+                newConfig.enable = sc.getBoolean(key + ".enable");
+
+                newConfig.custom_enable = sc.getBoolean(key + ".custom.enable");
+                newConfig.custom_string = sc.getString(key + ".custom.string");
+
+                newConfig.append_enable = sc.getBoolean(key + ".append.enable");
+                newConfig.append_prefix = sc.getString(key + ".append.prefix");
+                newConfig.append_suffix = sc.getString(key + ".append.suffix");
+                newConfig.append_string_color = sc.getString(key + ".append.string_color");
+
+                newConfig.optional_player_name = sc.getString(key + ".optional.player_name");
+            }
+            this.msgConfigMap.put("key", newConfig);
+        });
     }
 
     public enum LogType {

@@ -9,7 +9,7 @@ import axc.AXPlayerHelper.utility.Message;
 @SuppressWarnings("unused")
 public class AXPlayerHelper extends JavaPlugin {
 
-    private Message msg;
+    public Message msg;
 
     @Override
     public void onEnable() {
@@ -22,6 +22,7 @@ public class AXPlayerHelper extends JavaPlugin {
 //        this.getServer().getPluginManager().registerEvents(new Explosion(this), this);
         this.getCommand("echo").setExecutor(new echo(this));
         this.getCommand("s").setExecutor(new s(this));
+        this.getCommand("test").setExecutor(new test(this));
 
     }
 

@@ -1,14 +1,94 @@
+##################################################
+# message: Color Options
+# GRAY
+# GREEN
+# YELLOW
+# RED
+# AQUA
+##################################################
+# message: Format Options
+# BOLD
+##################################################
+# message: Information Options
+# WORLD
+# POSX
+# POSY
+# POSZ
+# DEATH_CAUSE
+# PLAYER_NAME
+# DAMAGE
+##################################################
+# message: YAML format
+# message:
+#     config_name:
+#         enable: true/false                        # use config(true) or use default(false)
+#         custom:                                   # Fully customized string
+#             enable: true/false                    # Enable/Disable custom string (1st Priority)
+#             string: "{GRAY}[{GREEN}!{GRAY] Hi"    # Fully custom string
+#         append:                                   # Prefix/Suffix option, Color/Format modification of original string of certain values
+#             enable: true/false                    # Enable/Disable append strings (2nd Priority)
+#             prefix: "{GRAY}[{GREEN}!{GRAY}]"      # String to go before original string
+#             suffix: "[{YELLOW}W{GRAY}:{GRAY}]"    # String to go after original string
+#             string_color: "{GRAY}"                # Color of string
+#         optional:                                 # Options for original string
+#             player_name: "{YELLOW}"               # Color of player's name in string
+##################################################
 message:
     player_join:
+        enable: true
+        custom:
+            enable: true
+            string: "{GRAY}[{GREEN}+{GRAY}] {PLAYER_NAME} {GRAY}joined"
+        append:
+            enable: false
+            prefix: "{GRAY}[{GREEN}+{GRAY}]"
+            string_color: "{GRAY}"
+        optional:
+            player_name: "{AQUA}"
     player_quit:
+        enable: true
+        custom:
+            enable: true
+            string: "{GRAY}[{RED}-{GRAY}] {PLAYER_NAME} {GRAY}quit"
+        append:
+            enable: false
+            prefix: "{GRAY}[{RED}-{GRAY}]"
+            string_color: "{GRAY}"
+        optional:
+            player_name: "{AQUA}"
     player_death:
-        custom: true
-        options:
-            full_custom_flag: false
-            full_custom_string: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}] {YELLOW}{PLAYER_NAME} {GRAY}died \r{GRAY}{BOLD}[{GRAY}{DEATH_CAUSE}{GRAY}{BOLD}][{RED}-{DAMAGE}{GRAY}{BOLD}]"
-            prefix: "{GRAY}{BOLD}[{GREEN}{BOLD}!{GRAY}{BOLD}]"
+        enable: true
+        custom:
+            enable: true
+            string: "{GRAY}[{GREEN}!{GRAY}] {PLAYER_NAME} {GRAY}died \r{GRAY}[{RED}{DEATH_CAUSE}{GRAY}]\r[{RED}-{DAMAGE}{GRAY}]"
+        append:
+            enable: false
+            prefix: "{GRAY}[{GREEN}{BOLD}!{GRAY}]"
             suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY},{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY},{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY},{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
-            player_color: "{YELLOW}"
-            killer_color: "{RED}"
-    invalid_argument_type: ""
-    invalid_argument_count: ""
+            string_color: "{GRAY}"
+        optional:
+            player_name: "{YELLOW}"
+    invalid_argument_type:
+        enable: true
+        custom:
+            enable: true
+            string: "{GRAY}[{GREEN}!{GRAY}] {PLAYER_NAME} {GRAY}died \r{GRAY}[{RED}{DEATH_CAUSE}{GRAY}]\r[{RED}-{DAMAGE}{GRAY}]"
+        append:
+            enable: false
+            prefix: "{GRAY}[{GREEN}{BOLD}!{GRAY}]"
+            suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY},{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY},{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY},{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
+            string_color: "{GRAY}"
+        optional:
+            player_name: "{YELLOW}"
+    invalid_argument_count:
+        enable: true
+        custom:
+            enable: true
+            string: "{GRAY}[{GREEN}!{GRAY}] {PLAYER_NAME} {GRAY}died \r{GRAY}[{RED}{DEATH_CAUSE}{GRAY}]\r[{RED}-{DAMAGE}{GRAY}]"
+        append:
+            enable: false
+            prefix: "{GRAY}[{GREEN}{BOLD}!{GRAY}]"
+            suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY},{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY},{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY},{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
+            string_color: "{GRAY}"
+        optional:
+            player_name: "{YELLOW}"
