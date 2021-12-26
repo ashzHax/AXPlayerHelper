@@ -17,6 +17,7 @@
 # DEATH_CAUSE
 # PLAYER_NAME
 # DAMAGE
+# USAGE
 ##################################################
 # message: YAML format
 # message:
@@ -44,7 +45,7 @@ message:
             prefix: "{GRAY}[{GREEN}+{GRAY}]"
             string_color: "{GRAY}"
         optional:
-            player_name: "{AQUA}"
+            player_name: "{YELLOW}"
     player_quit:
         enable: true
         custom:
@@ -55,7 +56,7 @@ message:
             prefix: "{GRAY}[{RED}-{GRAY}]"
             string_color: "{GRAY}"
         optional:
-            player_name: "{AQUA}"
+            player_name: "{YELLOW}"
     player_death:
         enable: true
         custom:
@@ -72,23 +73,16 @@ message:
         enable: true
         custom:
             enable: true
-            string: "{GRAY}[{GREEN}!{GRAY}] {PLAYER_NAME} {GRAY}died \r{GRAY}[{RED}{DEATH_CAUSE}{GRAY}]\r[{RED}-{DAMAGE}{GRAY}]"
+            string: "{GRAY}[{RED}!{GRAY}] {RED}Invalid argument type"
         append:
             enable: false
-            prefix: "{GRAY}[{GREEN}{BOLD}!{GRAY}]"
-            suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY},{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY},{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY},{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
-            string_color: "{GRAY}"
-        optional:
-            player_name: "{YELLOW}"
+            prefix: "{GRAY}[{RED}!{GRAY}] {RED}Invalid argument type {GRAY}("
+            suffix: "{GRAY})"
+            string_color: "{RED}"
     invalid_argument_count:
         enable: true
         custom:
             enable: true
-            string: "{GRAY}[{GREEN}!{GRAY}] {PLAYER_NAME} {GRAY}died \r{GRAY}[{RED}{DEATH_CAUSE}{GRAY}]\r[{RED}-{DAMAGE}{GRAY}]"
-        append:
-            enable: false
-            prefix: "{GRAY}[{GREEN}{BOLD}!{GRAY}]"
-            suffix: "[{YELLOW}{BOLD}W{GRAY}{BOLD}:{GRAY}{WORLD}{GRAY},{YELLOW}{BOLD}X{GRAY}{BOLD}:{GRAY}{POSX}{GRAY},{YELLOW}{BOLD}Y{GRAY}{BOLD}:{GRAY}{POSY}{GRAY},{YELLOW}{BOLD}Z{GRAY}{BOLD}:{GRAY}{POSZ}{GRAY}{BOLD}]"
-            string_color: "{GRAY}"
+            string: "{GRAY}[{RED}!{GRAY}] {RED}Invalid argument count ({USAGE})"
         optional:
-            player_name: "{YELLOW}"
+            usage: "{GRAY}"

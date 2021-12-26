@@ -15,8 +15,8 @@ public class test implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        Message tmsg = new Message(plugin);
-        tmsg.msgConfigMap.forEach((String str, MessageTypeConfig msg) -> {
+        //Message tmsg = new Message(plugin);
+        this.plugin.msg.msgConfigMap.forEach((String str, MessageTypeConfig msg) -> {
             commandSender.sendMessage("======================");
             commandSender.sendMessage("String: "+str);
             commandSender.sendMessage("enable: "+msg.enable);
