@@ -19,84 +19,71 @@ public class Message {
     private FileConfiguration config;
     public Map<String, MessageTypeConfig> msgConfigMap = new HashMap<String, MessageTypeConfig>();
 
-    public Message(AXPlayerHelper pl)
-    {
-        Set<String> msgTypeList;
-        ConfigurationSection sc;
-
-        this.plugin = pl;
-        this.config = pl.getConfig();
-
-        sc = this.config.getConfigurationSection("message");
-        msgTypeList = sc.getKeys(false);
-
-        // get all configuration
-        msgTypeList.forEach((String key) -> {
-            this.plugin.getServer().broadcastMessage("->"+key);
-            MessageTypeConfig newConfig = new MessageTypeConfig();
-            {
-                newConfig.enable = sc.getBoolean(key + ".enable");
-
-                newConfig.custom_enable = sc.getBoolean(key + ".custom.enable");
-                newConfig.custom_string = sc.getString(key + ".custom.string");
-
-                newConfig.append_enable = sc.getBoolean(key + ".append.enable");
-                newConfig.append_prefix = sc.getString(key + ".append.prefix");
-                newConfig.append_suffix = sc.getString(key + ".append.suffix");
-                newConfig.append_string_color = sc.getString(key + ".append.string_color");
-
-                newConfig.optional_player_name = sc.getString(key + ".optional.player_name");
-            }
-            this.msgConfigMap.put("key", newConfig);
-        });
-    }
-
-    public enum LogType {
-        PLAYER_JOIN,
-        PLAYER_QUIT,
-        PLAYER_DEATH,
-        COMMAND_INVALID_ARGUMENT_TYPE,
-        COMMAND_REQUIRE_ARGUMENTS,
-    };
-
+    // data list
     public enum DataType {
         PLAYER_NAME,
         POSITION,
         DAMAGE,
         DEATH_CAUSE,
-		WORLD,
-		POSX,
-		POSY,
-		POSZ,
+        WORLD,
+        POSX,
+        POSY,
+        POSZ,
     };
 
-    private static String convertColorString(String target)
+    public Message(AXPlayerHelper pl)
     {
-        target = target.replaceAll("\\{AQUA\\}", ChatColor.AQUA+"");
-        target = target.replaceAll("\\{BLACK\\}", ChatColor.BLACK+"");
-        target = target.replaceAll("\\{BLUE\\}", ChatColor.BLUE+"");
-        target = target.replaceAll("\\{BOLD\\}", ChatColor.BOLD+"");
-        target = target.replaceAll("\\{COLOR_CHAR\\}", ChatColor.COLOR_CHAR+"");
-        target = target.replaceAll("\\{DARK_AQUA\\}", ChatColor.DARK_AQUA+"");
-        target = target.replaceAll("\\{DARK_BLUE\\}", ChatColor.DARK_BLUE+"");
-        target = target.replaceAll("\\{DARK_GRAY\\}", ChatColor.DARK_GRAY+"");
-        target = target.replaceAll("\\{DARK_GREEN\\}", ChatColor.DARK_GREEN+"");
-        target = target.replaceAll("\\{DARK_PURPLE\\}", ChatColor.DARK_PURPLE+"");
-        target = target.replaceAll("\\{DARK_RED\\}", ChatColor.DARK_RED+"");
-        target = target.replaceAll("\\{GOLD\\}", ChatColor.GOLD+"");
-        target = target.replaceAll("\\{GRAY\\}", ChatColor.GRAY+"");
-        target = target.replaceAll("\\{GREEN\\}", ChatColor.GREEN+"");
-        target = target.replaceAll("\\{ITALIC\\}", ChatColor.ITALIC+"");
-        target = target.replaceAll("\\{LIGHT_PURPLE\\}", ChatColor.LIGHT_PURPLE+"");
-        target = target.replaceAll("\\{MAGIC\\}", ChatColor.MAGIC+"");
-        target = target.replaceAll("\\{RED\\}", ChatColor.RED+"");
-        target = target.replaceAll("\\{RESET\\}", ChatColor.RESET+"");
-        target = target.replaceAll("\\{STRIKETHROUGH\\}", ChatColor.STRIKETHROUGH+"");
-        target = target.replaceAll("\\{UNDERLINE\\}", ChatColor.UNDERLINE+"");
-        target = target.replaceAll("\\{WHITE\\}", ChatColor.WHITE+"");
-        target = target.replaceAll("\\{YELLOW\\}", ChatColor.YELLOW+"");
+        ConfigurationSection sc;
+        this.plugin = pl;
+        this.config = pl.getConfig();
 
-        return target;
+        // get all configuration
+        sc = this.config.getConfigurationSection("message");
+        sc.getKeys(false).forEach((String key) -> {
+            MessageTypeConfig newConfig = new MessageTypeConfig();
+            {
+                newConfig.enable                = sc.getBoolean(    key + ".enable");
+                newConfig.custom_enable         = sc.getBoolean(    key + ".custom.enable");
+                newConfig.custom_string         = sc.getString(     key + ".custom.string");
+                newConfig.append_enable         = sc.getBoolean(    key + ".append.enable");
+                newConfig.append_prefix         = sc.getString(     key + ".append.prefix");
+                newConfig.append_suffix         = sc.getString(     key + ".append.suffix");
+                newConfig.append_string_color   = sc.getString(     key + ".append.string_color");
+                newConfig.optional_player_name  = sc.getString(     key + ".optional.player_name");
+            }
+            this.msgConfigMap.put(key, newConfig);
+        });
+    }
+
+    private String convertColor(String original)
+    {
+        String msg = original;
+
+        msg = msg.replaceAll("\\{AQUA\\}",            ChatColor.AQUA+"");
+        msg = msg.replaceAll("\\{BLACK\\}",           ChatColor.BLACK+"");
+        msg = msg.replaceAll("\\{BLUE\\}",            ChatColor.BLUE+"");
+        msg = msg.replaceAll("\\{BOLD\\}",            ChatColor.BOLD+"");
+        msg = msg.replaceAll("\\{COLOR_CHAR\\}",      ChatColor.COLOR_CHAR+"");
+        msg = msg.replaceAll("\\{DARK_AQUA\\}",       ChatColor.DARK_AQUA+"");
+        msg = msg.replaceAll("\\{DARK_BLUE\\}",       ChatColor.DARK_BLUE+"");
+        msg = msg.replaceAll("\\{DARK_GRAY\\}",       ChatColor.DARK_GRAY+"");
+        msg = msg.replaceAll("\\{DARK_GREEN\\}",      ChatColor.DARK_GREEN+"");
+        msg = msg.replaceAll("\\{DARK_PURPLE\\}",     ChatColor.DARK_PURPLE+"");
+        msg = msg.replaceAll("\\{DARK_RED\\}",        ChatColor.DARK_RED+"");
+        msg = msg.replaceAll("\\{GOLD\\}",            ChatColor.GOLD+"");
+        msg = msg.replaceAll("\\{GRAY\\}",            ChatColor.GRAY+"");
+        msg = msg.replaceAll("\\{GREEN\\}",           ChatColor.GREEN+"");
+        msg = msg.replaceAll("\\{ITALIC\\}",          ChatColor.ITALIC+"");
+        msg = msg.replaceAll("\\{LIGHT_PURPLE\\}",    ChatColor.LIGHT_PURPLE+"");
+        msg = msg.replaceAll("\\{MAGIC\\}",           ChatColor.MAGIC+"");
+        msg = msg.replaceAll("\\{RED\\}",             ChatColor.RED+"");
+        msg = msg.replaceAll("\\{RESET\\}",           ChatColor.RESET+"");
+        msg = msg.replaceAll("\\{STRIKETHROUGH\\}",   ChatColor.STRIKETHROUGH+"");
+        msg = msg.replaceAll("\\{UNDERLINE\\}",       ChatColor.UNDERLINE+"");
+        msg = msg.replaceAll("\\{WHITE\\}",           ChatColor.WHITE+"");
+        msg = msg.replaceAll("\\{YELLOW\\}",          ChatColor.YELLOW+"");
+
+        return msg;
     }
 
     private static String convertGeneralString(DataType strT, String target, Map<DataType, String> data)
@@ -171,10 +158,25 @@ public class Message {
         return target;
     }
 
-    public static String getConfigMessage(AXPlayerHelper plugin, LogType logT, Map<DataType, String> data)
+    private String convertData(String original) {
+        String msg = original;
+        return msg;
+    }
+
+    private String convert(String original) {
+        String msg = original;
+
+        msg = convertColor(msg);
+        msg = convertData(msg);
+
+        return msg;
+    }
+
+    public static String getConfigMessage(AXPlayerHelper plugin/*, LogType logT*/, Map<DataType, String> data)
     {
         String returnString;
 
+        /*
         switch(logT) {
             case PLAYER_JOIN: {
                 returnString = plugin.getConfig().getString("messages.player_join");
@@ -220,6 +222,8 @@ public class Message {
             }
         }
         return returnString;
+        */
+        return null;
     }
 
 	public static String createLocationString(Location TL /*Target Location*/)
